@@ -10,7 +10,8 @@ namespace AirlinesApp
         public int FlightNumber { get; set; }
         public string FlightStartAirport { get; set; }
         public string FlightDestinationAirport { get; set; }
-        public int FlightCapacity { get; set; }
+        public int TotalCapacity { get; set; }
+        public int Availability { get; private set; }
         #endregion
     }
 }

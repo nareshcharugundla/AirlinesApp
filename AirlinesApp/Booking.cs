@@ -11,5 +11,6 @@ namespace AirlinesApp
         public string PassengerName { get; set; }
         public string DepartingAirport { get; set; }
         public string ArrivalAirport { get; set; }
+        public DateTime JourneyDate { get; set; }
     }
 }
