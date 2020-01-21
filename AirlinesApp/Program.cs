@@ -6,11 +6,13 @@ namespace AirlinesApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Airlines. Please select an option below");
-            Console.WriteLine("1. Search Flights\n" +
-                              "2. Manage Booking\n");
-            int selection = int.Parse(Console.ReadLine());
-
+            var myBooking = new Booking();
+            myBooking.PassengerName = "Naresh";
+            myBooking.DepartingAirport = "Seattle";
+            myBooking.ArrivalAirport = "Hyderabad";
+            myBooking.JourneyDate = DateTime.UtcNow.AddDays(10); //for now just adding 10 days for current time as journey date
+            myBooking.MealPreference = Meal.Vegetarian;
+            
         }
     }
 }
