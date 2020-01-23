@@ -7,7 +7,7 @@ namespace AirlinesApp
 {
     public enum FlightEnum
     {
-        AA123 = 100,
+        AA123,
         BB456,
         CC789
     }
@@ -28,7 +28,7 @@ namespace AirlinesApp
             {
                 FlightDetails = FlightEnum.AA123;
             }
-            else if(DepartingAirport == "Seattle" && ArrivalAirport == "Bengalore")
+            else if(DepartingAirport == "Seattle" && ArrivalAirport == "Bangalore")
             {
                 FlightDetails = FlightEnum.BB456;
             }

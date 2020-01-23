@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AirlinesApp
 {
-    class Reservation
+    class Airline
     {
         public static Booking CreateReservation(string passengerName, string departingAirport, 
             string arrivalAirport, DateTime journeyDate, Meal food = Meal.Vegetarian)

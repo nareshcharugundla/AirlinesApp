@@ -6,13 +6,11 @@ namespace AirlinesApp
     {
         static void Main(string[] args)
         {
-            var myBooking = new Booking();
-            myBooking.PassengerName = "Naresh";
-            myBooking.DepartingAirport = "Seattle";
-            myBooking.ArrivalAirport = "Hyderabad";
-            myBooking.JourneyDate = DateTime.UtcNow.AddDays(10); //for now just adding 10 days for current time as journey date
-            myBooking.MealPreference = Meal.Vegetarian;
-            
+            var myBooking = Airline.CreateReservation("Naresh", "Seattle", "Hyderabad", DateTime.UtcNow.AddDays(10),Meal.NonVeg);
+            Console.WriteLine($"BookingID: {myBooking.BookingID}, PassengerName: {myBooking.PassengerName}, JourneyDate: {myBooking.JourneyDate}, DepartingFrom: {myBooking.DepartingAirport}, ArrivingAt: {myBooking.ArrivalAirport}, FlightNumber: {myBooking.FlightNumber}");
+
+            var myBooking2 = Airline.CreateReservation("Leela", "Seattle", "Bangalore", DateTime.UtcNow.AddDays(10), Meal.Vegetarian);
+            Console.WriteLine($"BookingID: {myBooking2.BookingID}, PassengerName: {myBooking2.PassengerName}, JourneyDate: {myBooking2.JourneyDate}, DepartingFrom: {myBooking2.DepartingAirport}, ArrivingAt: {myBooking2.ArrivalAirport}, FlightNumber: {myBooking2.FlightNumber}");
         }
     }
 }
