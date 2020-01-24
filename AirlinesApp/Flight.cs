@@ -11,9 +11,15 @@ namespace AirlinesApp
         BB456,
         CC789
     }
+
+    /// <summary>
+    /// This is the flight class. For now it has a method to determine the flight number based on properties Departing\Arriving Airport. 
+    /// </summary>
     class Flight
     {
-        private static int LastKnownAvailability = 100;
+        /// <summary>
+        /// Each property is for flight object. Since there is no database integration to store Total Capacity and Availability per flight not adding any logic to determine them
+        /// </summary>
         #region Flight Class Properties
         public FlightEnum FlightDetails { get; private set; }
         public string FlightStartAirport { get; set; }
