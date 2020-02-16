@@ -21,6 +21,7 @@ namespace AirlinesApp
         public DateTime CreatedDate { get; set; }
         public DateTime JourneyDate { get; set; }
         public Meal MealPreference { get; set; }
+        public string EmailAddress { get; set; }
 
         public Booking()
         {

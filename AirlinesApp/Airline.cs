@@ -7,8 +7,9 @@ namespace AirlinesApp
     /// <summary>
     /// This Airline class is the Factory class which contains methods for all the operations(Reservation, Manage Booking, Cancellation). This will call\instantiate the actual sub-classes.
     /// </summary>
-    class Airline
+    static class Airline
     {
+        public static List<Booking> Bookings = new List<Booking>();
         /// <summary>
         /// This method is for creating a Reservation based on the inputs parameters provided by user\user interface. It returns Booking type.
         /// </summary>
@@ -19,7 +20,7 @@ namespace AirlinesApp
         /// <param name="food">Mean preference</param>
         /// <returns></returns>
         public static Booking CreateReservation(string passengerName, string departingAirport, 
-            string arrivalAirport, DateTime journeyDate, Meal food = Meal.Vegetarian)
+            string arrivalAirport, DateTime journeyDate, string emailAddress, Meal food = Meal.Vegetarian)
         {
             var f = new Flight();
             var Booking = new Booking
@@ -28,11 +29,13 @@ namespace AirlinesApp
                 DepartingAirport = departingAirport,
                 ArrivalAirport = arrivalAirport,
                 JourneyDate = journeyDate,
-                MealPreference = food
+                MealPreference = food,
+                EmailAddress = emailAddress
             };
             f.GetFlightNumber(Booking.DepartingAirport, Booking.ArrivalAirport);
             Booking.FlightNumber = f.FlightDetails;
-            
+
+            Bookings.Add(Booking);
             return Booking;
         }
     }
