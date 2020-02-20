@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace AirlinesApp
 {
@@ -37,6 +38,26 @@ namespace AirlinesApp
 
             Bookings.Add(Booking);
             return Booking;
+        }
+
+        public static void UpdateReservation(int bookingID, DateTime newjourneyDate)
+        {
+            var booking = Bookings.SingleOrDefault(b => b.BookingID == bookingID);
+            if(booking == null)
+            {
+                return;
+            }
+            booking.UpdateBooking(newjourneyDate);
+        }
+
+        public static IEnumerable<Booking> GetAllBookingsByEmailAddress(string emailAddress)
+        {
+            return Bookings.Where(b => b.EmailAddress == emailAddress).OrderByDescending(b => b.CreatedDate);
+        }
+
+        public static Booking GetAllDetailsByBookingID(int bookingID)
+        {
+            return Bookings.SingleOrDefault(b => b.BookingID == bookingID);
         }
     }
 }

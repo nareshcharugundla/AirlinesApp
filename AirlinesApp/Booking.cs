@@ -10,7 +10,7 @@ namespace AirlinesApp
         NonVeg,
         KidSize
     }
-    class Booking
+    public class Booking
     {
         private static int LastBookingNumber = 0;
         public int BookingID { get; private set; }
@@ -27,6 +27,11 @@ namespace AirlinesApp
         {
             BookingID = ++LastBookingNumber;
             CreatedDate = DateTime.UtcNow;
+        }
+
+        public void UpdateBooking(DateTime newjourneyDate)
+        {
+            JourneyDate = newjourneyDate;
         }
     }
 }

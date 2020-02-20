@@ -55,12 +55,27 @@ namespace AirlinesApp
 
                         break;
                     case "2":
-                        
+                        PrintAllBookings();
+                        Console.Write("Enter Booking ID: ");
+                        var bookingID = Convert.ToInt32(Console.ReadLine());
+                        var Booking = Airline.GetAllDetailsByBookingID(bookingID);
+                        Console.WriteLine($"BookingID: {Booking.BookingID}, PassengerName: {Booking.PassengerName}, JourneyDate: {Booking.JourneyDate}, DepartingFrom: {Booking.DepartingAirport}, ArrivingAt: {Booking.ArrivalAirport}, FlightNumber: {Booking.FlightNumber}, Meal: {Booking.MealPreference}, EmailAddress: {Booking.EmailAddress}");
+                        Console.Write("Enter New Journey Date: ");
+                        var newDate = Convert.ToDateTime(Console.ReadLine());
+                        Airline.UpdateReservation(bookingID,newDate);
+                        break;
+
                     case "3":
-                        
+                        //Will update
+                        //Add new property called BookingStatus
+                        break;
+
                     case "4":
-                        
+                        PrintAllBookings();
+                        break;
+
                     case "5":
+                        break;
                         
                     default:
                         Console.WriteLine("Invalid Option. Please try again");
@@ -69,14 +84,17 @@ namespace AirlinesApp
                 }
 
             }
+        }
 
-
-
-            
-            
-
-            //var myBooking2 = Airline.CreateReservation("Leela", "Seattle", "Bangalore", DateTime.UtcNow.AddDays(10), Meal.Vegetarian);
-            //Console.WriteLine($"BookingID: {myBooking2.BookingID}, PassengerName: {myBooking2.PassengerName}, JourneyDate: {myBooking2.JourneyDate}, DepartingFrom: {myBooking2.DepartingAirport}, ArrivingAt: {myBooking2.ArrivalAirport}, FlightNumber: {myBooking2.FlightNumber}, Meal: {myBooking2.MealPreference}");
+        private static void PrintAllBookings()
+        {
+            Console.Write("Enter EmailAddress: ");
+            var emailAddress = Console.ReadLine();
+            var bookings = Airline.GetAllBookingsByEmailAddress(emailAddress);
+            foreach (var booking in bookings)
+            {
+                Console.WriteLine($"BookingID: {booking.BookingID}, PassengerName: {booking.PassengerName}, JourneyDate: {booking.JourneyDate}, DepartingFrom: {booking.DepartingAirport}, ArrivingAt: {booking.ArrivalAirport}, FlightNumber: {booking.FlightNumber}, Meal: {booking.MealPreference}, EmailAddress: {booking.EmailAddress}");
+            }
         }
     }
 }
