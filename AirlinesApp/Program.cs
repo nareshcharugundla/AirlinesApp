@@ -66,8 +66,7 @@ namespace AirlinesApp
                         break;
 
                     case "3":
-                        //Will update
-                        //Add new property called BookingStatus
+                        //Still trying to figure out how to do cancel reservation. It will be easy to do once database integration is complete.
                         break;
 
                     case "4":
@@ -75,6 +74,7 @@ namespace AirlinesApp
                         break;
 
                     case "5":
+                        //Will add this once database integration is done.
                         break;
                         
                     default:
