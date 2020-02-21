@@ -80,9 +80,10 @@ namespace AirlinesApp
                         }
                         catch(ArgumentNullException ane)
                         {
+                            Console.WriteLine("Invalid Booking ID");
                             Console.WriteLine($"{ane.Message}");
                         }
-                        catch(ArithmeticException ae)
+                        catch(ArgumentException ae)
                         {
                             Console.WriteLine($"{ae.Message}");
                         }
