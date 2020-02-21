@@ -45,7 +45,7 @@ namespace AirlinesApp
             var booking = Bookings.SingleOrDefault(b => b.BookingID == bookingID);
             if(booking == null)
             {
-                return;
+                throw new ArgumentNullException("Invalid Booking ID. Please try again with a valid One!");
             }
             booking.UpdateBooking(newjourneyDate);
         }

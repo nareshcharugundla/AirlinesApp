@@ -56,13 +56,40 @@ namespace AirlinesApp
                         break;
                     case "2":
                         PrintAllBookings();
-                        Console.Write("Enter Booking ID: ");
-                        var bookingID = Convert.ToInt32(Console.ReadLine());
-                        var Booking = Airline.GetAllDetailsByBookingID(bookingID);
-                        Console.WriteLine($"BookingID: {Booking.BookingID}, PassengerName: {Booking.PassengerName}, JourneyDate: {Booking.JourneyDate}, DepartingFrom: {Booking.DepartingAirport}, ArrivingAt: {Booking.ArrivalAirport}, FlightNumber: {Booking.FlightNumber}, Meal: {Booking.MealPreference}, EmailAddress: {Booking.EmailAddress}");
-                        Console.Write("Enter New Journey Date: ");
-                        var newDate = Convert.ToDateTime(Console.ReadLine());
-                        Airline.UpdateReservation(bookingID,newDate);
+                        try
+                        {
+                            Console.Write("Enter Booking ID: ");
+                            var bookingID = Convert.ToInt32(Console.ReadLine());
+                            var Booking = Airline.GetAllDetailsByBookingID(bookingID);
+                            Console.WriteLine($"BookingID: {Booking.BookingID}, PassengerName: {Booking.PassengerName}, JourneyDate: {Booking.JourneyDate}, DepartingFrom: {Booking.DepartingAirport}, ArrivingAt: {Booking.ArrivalAirport}, FlightNumber: {Booking.FlightNumber}, Meal: {Booking.MealPreference}, EmailAddress: {Booking.EmailAddress}");
+                            Console.Write("Enter New Journey Date: ");
+                            var newDate = Convert.ToDateTime(Console.ReadLine());
+                            Airline.UpdateReservation(bookingID, newDate);
+                        }
+                        catch(FormatException)
+                        {
+                            Console.WriteLine("Invalid Booking ID. Please try again!");
+                        }
+                        catch(OverflowException)
+                        {
+                            Console.WriteLine("Invalid Booking ID. Please try again!");
+                        }
+                        catch(ArgumentOutOfRangeException aoe)
+                        {
+                            Console.WriteLine($"{aoe.Message}");
+                        }
+                        catch(ArgumentNullException ane)
+                        {
+                            Console.WriteLine($"{ane.Message}");
+                        }
+                        catch(ArithmeticException ae)
+                        {
+                            Console.WriteLine($"{ae.Message}");
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine($"{ex.StackTrace}");
+                        }
                         break;
 
                     case "3":
@@ -89,11 +116,18 @@ namespace AirlinesApp
         private static void PrintAllBookings()
         {
             Console.Write("Enter EmailAddress: ");
-            var emailAddress = Console.ReadLine();
-            var bookings = Airline.GetAllBookingsByEmailAddress(emailAddress);
-            foreach (var booking in bookings)
+            try
             {
-                Console.WriteLine($"BookingID: {booking.BookingID}, PassengerName: {booking.PassengerName}, JourneyDate: {booking.JourneyDate}, DepartingFrom: {booking.DepartingAirport}, ArrivingAt: {booking.ArrivalAirport}, FlightNumber: {booking.FlightNumber}, Meal: {booking.MealPreference}, EmailAddress: {booking.EmailAddress}");
+                var emailAddress = Console.ReadLine();
+                var bookings = Airline.GetAllBookingsByEmailAddress(emailAddress);
+                foreach (var booking in bookings)
+                {
+                    Console.WriteLine($"BookingID: {booking.BookingID}, PassengerName: {booking.PassengerName}, JourneyDate: {booking.JourneyDate}, DepartingFrom: {booking.DepartingAirport}, ArrivingAt: {booking.ArrivalAirport}, FlightNumber: {booking.FlightNumber}, Meal: {booking.MealPreference}, EmailAddress: {booking.EmailAddress}");
+                }
+            }
+            catch(FormatException)
+            {
+                Console.WriteLine("Invalid Email. Please try again!");
             }
         }
     }
