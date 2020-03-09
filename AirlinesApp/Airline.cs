@@ -34,8 +34,8 @@ namespace AirlinesApp
                 MealPreference = food,
                 EmailAddress = emailAddress
             };
-            f.GetFlightNumber(Booking.DepartingAirport, Booking.ArrivalAirport);
-            Booking.FlightNumber = f.FlightNumber;
+            
+            Booking.FlightNumber = f.GetFlightNumber(Booking.DepartingAirport, Booking.ArrivalAirport); ;
 
             db.Bookings.Add(Booking);
             db.SaveChanges();
