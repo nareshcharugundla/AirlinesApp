@@ -6,8 +6,6 @@ using System.Linq;
 
 namespace AirlinesApp
 {
-   
-
     /// <summary>
     /// This is the flight class. For now it has a method to determine the flight number based on properties Departing\Arriving Airport. 
     /// </summary>
@@ -29,15 +27,6 @@ namespace AirlinesApp
         {
             var Flight = db.Flights.SingleOrDefault(f => f.FlightStartAirport == DepartingAirport && f.FlightDestinationAirport == ArrivalAirport);
             return Flight.FlightNumber;
-            
-            //if(DepartingAirport == "Seattle" && ArrivalAirport == "Hyderabad")
-            //{
-            //    FlightNumber = FlightEnum.AA123;
-            //}
-            //else if(DepartingAirport == "Seattle" && ArrivalAirport == "Bangalore")
-            //{
-            //    FlightNumber = FlightEnum.BB456;
-            //}
         }
     }
 }
