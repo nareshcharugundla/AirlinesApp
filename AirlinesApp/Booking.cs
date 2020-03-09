@@ -10,11 +10,11 @@ namespace AirlinesApp
         NonVeg,
         KidSize
     }
-    public class Booking
+    class Booking
     {
         private static int LastBookingNumber = 0;
-        public int BookingID { get; private set; }
-        public FlightEnum FlightNumber { get; internal set; }
+        public int BookingID { get; set; }
+        public FlightEnum FlightNumber { get; set; }
         public string PassengerName { get; set; }
         public string DepartingAirport { get; set; }
         public string ArrivalAirport { get; set; }
@@ -22,6 +22,7 @@ namespace AirlinesApp
         public DateTime JourneyDate { get; set; }
         public Meal MealPreference { get; set; }
         public string EmailAddress { get; set; }
+        public Flight Flight { get; set; }
 
         public Booking()
         {

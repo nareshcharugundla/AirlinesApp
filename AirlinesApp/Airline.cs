@@ -10,7 +10,8 @@ namespace AirlinesApp
     /// </summary>
     static class Airline
     {
-        public static List<Booking> Bookings = new List<Booking>();
+        //public static List<Booking> Bookings = new List<Booking>();
+        private static AirlineContext db = new AirlineContext();
         /// <summary>
         /// This method is for creating a Reservation based on the inputs parameters provided by user\user interface. It returns Booking type.
         /// </summary>
@@ -34,30 +35,32 @@ namespace AirlinesApp
                 EmailAddress = emailAddress
             };
             f.GetFlightNumber(Booking.DepartingAirport, Booking.ArrivalAirport);
-            Booking.FlightNumber = f.FlightDetails;
+            Booking.FlightNumber = f.FlightNumber;
 
-            Bookings.Add(Booking);
+            db.Bookings.Add(Booking);
+            db.SaveChanges();
             return Booking;
         }
 
         public static void UpdateReservation(int bookingID, DateTime newjourneyDate)
         {
-            var booking = Bookings.SingleOrDefault(b => b.BookingID == bookingID);
+            var booking = db.Bookings.SingleOrDefault(b => b.BookingID == bookingID);
             if(booking == null)
             {
                 throw new ArgumentNullException("Invalid Booking ID. Please try again with a valid One!");
             }
             booking.UpdateBooking(newjourneyDate);
+            db.SaveChanges();
         }
 
         public static IEnumerable<Booking> GetAllBookingsByEmailAddress(string emailAddress)
         {
-            return Bookings.Where(b => b.EmailAddress == emailAddress).OrderByDescending(b => b.CreatedDate);
+            return db.Bookings.Where(b => b.EmailAddress == emailAddress).OrderByDescending(b => b.CreatedDate);
         }
 
         public static Booking GetAllDetailsByBookingID(int bookingID)
         {
-            return Bookings.SingleOrDefault(b => b.BookingID == bookingID);
+            return db.Bookings.SingleOrDefault(b => b.BookingID == bookingID);
         }
     }
 }

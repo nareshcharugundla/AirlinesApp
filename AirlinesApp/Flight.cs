@@ -21,22 +21,22 @@ namespace AirlinesApp
         /// Each property is for flight object. Since there is no database integration to store Total Capacity and Availability per flight not adding any logic to determine them
         /// </summary>
         #region Flight Class Properties
-        public FlightEnum FlightDetails { get; private set; }
+        public FlightEnum FlightNumber { get; set; }
         public string FlightStartAirport { get; set; }
         public string FlightDestinationAirport { get; set; }
         public int TotalCapacity { get; set; }
-        public int Availability { get; private set; }
+        public int Availability { get; set; }
         #endregion
 
         public void GetFlightNumber(string DepartingAirport, string ArrivalAirport)
         {
             if(DepartingAirport == "Seattle" && ArrivalAirport == "Hyderabad")
             {
-                FlightDetails = FlightEnum.AA123;
+                FlightNumber = FlightEnum.AA123;
             }
             else if(DepartingAirport == "Seattle" && ArrivalAirport == "Bangalore")
             {
-                FlightDetails = FlightEnum.BB456;
+                FlightNumber = FlightEnum.BB456;
             }
         }
     }
