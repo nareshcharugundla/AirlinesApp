@@ -12,7 +12,7 @@ namespace AirlinesApp
     }
     class Booking
     {
-        private static int LastBookingNumber = 0;
+        
         public int BookingID { get; set; }
         public FlightEnum FlightNumber { get; set; }
         public string PassengerName { get; set; }
@@ -26,7 +26,6 @@ namespace AirlinesApp
 
         public Booking()
         {
-            BookingID = ++LastBookingNumber;
             CreatedDate = DateTime.UtcNow;
         }
 

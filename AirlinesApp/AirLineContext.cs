@@ -30,9 +30,9 @@ namespace AirlinesApp
                       .IsRequired()
                       .HasMaxLength(50);
 
-                entity.HasOne(e => e.Flight)
-                      .WithMany()
-                      .HasForeignKey(e => e.FlightNumber);
+                //entity.HasOne(e => e.Flight)
+                //      .WithMany()
+                //      .HasForeignKey(e => e.FlightNumber);
 
             });
 
