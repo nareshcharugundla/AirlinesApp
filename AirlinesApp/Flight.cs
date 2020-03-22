@@ -9,7 +9,7 @@ namespace AirlinesApp
     /// <summary>
     /// This is the flight class. For now it has a method to determine the flight number based on properties Departing\Arriving Airport. 
     /// </summary>
-    class Flight
+    public class Flight
     {
         public static AirlineContext db = new AirlineContext();
         /// <summary>

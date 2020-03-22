@@ -10,7 +10,7 @@ namespace AirlinesApp
         NonVeg,
         KidSize
     }
-    class Booking
+    public class Booking
     {
         
         public int BookingID { get; set; }

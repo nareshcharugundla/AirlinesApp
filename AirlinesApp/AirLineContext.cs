@@ -5,11 +5,19 @@ using System.Text;
 
 namespace AirlinesApp
 {
-    class AirlineContext : DbContext
+    public class AirlineContext : DbContext
     {
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 
+        public AirlineContext()
+        {
+
+        }
+        public AirlineContext(DbContextOptions<AirlineContext> options)
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AirlineDatabase;Integrated Security=True;Connect Timeout=30"); //using @ to ignore the escape character

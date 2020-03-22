@@ -8,7 +8,7 @@ namespace AirlinesApp
     /// <summary>
     /// This Airline class is the Factory class which contains methods for all the operations(Reservation, Manage Booking, Cancellation). This will call\instantiate the actual sub-classes.
     /// </summary>
-    static class Airline
+    public static class Airline
     {
         //public static List<Booking> Bookings = new List<Booking>();
         private static AirlineContext db = new AirlineContext();
